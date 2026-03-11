@@ -10,4 +10,5 @@ void jeu_init(void)
     Item repas("Viande et purée", 2, 10, 5);
     Item café("Café", 1, 2, 4);
     Item biscuits("Biscuits", 1.5, 2, 0);
+    Item chocolat("Chocolat", 1.5, 3, 0);
 }
