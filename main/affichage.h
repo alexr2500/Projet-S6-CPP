@@ -20,7 +20,7 @@ void afficher_carte(void) {
     cout << "      /     |.      /'  .      `\\_ ,_.-   ~  CASCADES WICHITA    |         \n";
     cout << "     |'     ` ._   |    .        ''        ~  ~ ~     X            ;.        \n";
     cout << "    ,/     .   ''|_|  .   ▒▒▒▒▒▒▒▒▒▒▒▒       ~  ~  ~  ║    .   .     '-. __.  \n";
-    cout << " /-''   ☼              ▒▒▒▒LAC ROSE▒▒▒            ╔═══╝         .       '  ;  \n";
+    cout << " /-''   ☼              ▒▒▒▒PINK LAKE▒▒▒           ╔═══╝         .       '  ;  \n";
     cout << "/  DESERT DE  ☼    .     ▒▒▒▒▒▒▒▒▒▒▒     .        ║     .       ■ ■   ■  ■ ';.\n";
     cout << "|  ☼ CACTUS  ☼         .      X           ╔═══════╩═════════X  ■   DALLAS   |\n";
     cout << "''| b_  ☼     ╔═══════════════╩═══╗  .    ║                      ■   ■  ■   |\n";
@@ -31,7 +31,7 @@ void afficher_carte(void) {
     cout << " '|-__,,.--.-.        ,,-          '''''''-...   ¤     ¤___   ,,--....|   \n";
     cout << "     ''      ''`-..Y-''                      `...- ...-''  ''''           \n";
     cout << "Prix des trains:" << endl;
-    cout << "[1 - MIDLAND : 2$] [2 - BROWNWOOD : 2$] [3 - CASCADES WICHITA : 3$] [4 - DALLAS : 4$] [5 - LAC ROSE : 1.5$]" << endl;
+    cout << "[1 - MIDLAND : 2$] [2 - BROWNWOOD : 2$] [3 - CASCADES WICHITA : 3$] [4 - DALLAS : 4$] [5 - PINK LAKE : 1.5$]" << endl;
     cout << "Le voyage vers [6 - DESERT DE CACTUS] se fait gratuitement à cheval." << endl;
     cout << "Voyage choisi:" << endl;
     cout << endl;

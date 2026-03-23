@@ -1,0 +1,123 @@
+~         ~~          __				___
+       _T      .,,.    ~--~ ^^		^^	^^   --
+ ^^   // \                    ~           __ _ 
+      ][O]    ^^      ,-~ ~	     //~-/	     ~ - -/ 
+   /''-I_I         _II____         __II__     ___II___
+__/_  /   \ ______/ ''   /'\_,____/''_ '/\___/''_''_'/\______
+  | II--'''' \,--:--..,_/,.-{ },  | -   | |  |-- - .-| | .. ,
+; '/__\,.--';|   |[] .-.| O{ _ }  |[] ] |'|  |[]  [] |'| ~
+:' |  | []  -|   ''--:.;[,.'\,/   |..__-| |  |.'_;__-|-|   ^
+'  |[]|,.--'' '', * ''-,.    | , . / / -,..   * ..  _  - *
+  ..   *..-''    ;    .   ''. '  _ - .. , ,;.  -,  *   ,.. -
+
+
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "\033[31mRed text\033[0m\n";
+    cout << "\033[32mGreen text\033[0m\n";
+    cout << "\033[34mBlue text\033[0m\n";
+}
+
+\033[31m  red
+\033[32m  green
+\033[33m  yellow
+\033[34m  blue
+\033[35m  magenta
+\033[36m  cyan
+\033[37m  white
+\033[0m   reset color
+
+\033[91m bright red
+\033[92m bright green
+\033[93m bright yellow
+\033[94m bright blue
+\033[95m bright magenta
+\033[96m bright cyan
+
+
+
+
+cout << "\x1b[34m";
+    cout << " ~         ~~          __                ___\n";
+    cout << "       _T      .,,.    ~--~ ^^        ^^  ^^   --\n";
+    cout << " ^^   // \\\\                    ~           __ _ \n";
+    cout << "      ][O]    ^^      ,-~ ~         //~-/         ~ - -/ \n";
+    cout << "   /''-I_I         _II____         __II__     ___II___\n";
+    cout << "__/_  /   \\\\ ______/ ''   /'\\\\_,____/''_ '/\\\\___/''_''_'/\\\\______\n";
+    cout << "  | II--'''' \\\\ ,--:--..,_/,.-{ },  | -   | |  |-- - .-| | .. ,\n";
+    cout << "; '/__\\\\,.--';|   |[] .-.| O{ _ }  |[] ] |'|  |[]  [] |'| ~\n";
+    cout << ":' |  | []  -|   ''--:.;[,.'\\\\,/   |..__-| |  |.'_;__-|-|   ^\n";
+    cout << "'  |[]|,.--'' '', * ''-,.    | , . / / -,..   * ..  _  - *\n";
+    cout << "  ..   *..-''    ;    .   ''. '  _ - .. , ,;.  -,  *   ,.. -\n";
+
+
+cout << "\x1b[0m]"; enlever la couleur
+
+
+
+
+
+                        __.            ,,"-.             _,....           
+      ,---b         ,-''' '.__       .''   ''`--'''`..--''    '\.         
+      /    \.      /'  .      `\_ ,_.-   ~  CASCADES WICHITA    |         
+     |'     ` ._   |    .        ''        ~  ~ ~    X           \.        
+    ,/     .   ''\_| .    ▒▒▒▒▒▒▒▒▒▒▒       ~  ~  ~  ║    .   .     '-. __.  
+ /-''   ☼              ▒▒▒▒LAC ROSE▒▒▒           ╔═══╝         .       '  \  
+/  DESERT DE  ☼    .     ▒▒▒▒▒▒▒▒▒▒▒     .       ║     .       ■ ■   ■  ■ '\.
+\ ☼ CACTUS  ☼         .      X          ╔════════╩═════════X  ■   DALLAS   |
+'\b_   ☼     ╔═══════════════╩══╗  .    ║                       ■   ■  ■   |
+   '☼     ☼  ║    .       .     ╚══════╦╝    ¤      ¤      .       ■  ■   ,'
+  ,/'        ║       .      ,___       ║   ¤  ¤  ¤ ¤  ¤        .          |' 
+ /'     X════╝   .        /''  '\.     X  ¤   BROWNWOOD  ¤          .     J  
+ |  MIDLAND          .  ,/'      `._    _   ¤  ¤  ¤ ¤        .         /'  
+ '\-__,,.--.-.        ,,-          '''''''-...   ¤     ¤___   ,,--....|   
+     ''      ''`-..Y-''                      `...- ...-''  ''''                 
+
+
+
+void afficher_intro(void) {
+    cout << "\x1b[33m" << endl;
+    cout << "ALTERDUNE - Western" << endl;
+    cout << "Nous sommes en 1897, dans l'état du Texas. Le cowboy Luke Dawson" << endl;
+    cout << "et son groupe de 5 aventuriers traversent un désert aride afin de" << endl;
+    cout << "traquer les Blackwoods, un groupe de 10 hors-la-loi très recherchés." << endl;
+    cout << "Equipez-vous, voyagez, et affrontez-les à la moindre rencontre pour" << endl;
+    cout << "remporter leurs trésors volés" << endl;
+    cout << "\x1b[0m" << endl;
+}
+
+void afficher_carte(void) {
+    cout << "                        __.            ,,\"-.             _,....           \n";
+    cout << "       ,---b         ,-''' '.__       .''   ''`--'''`..--''    ';.         \n";
+    cout << "      /     |.      /'  .      `\\_ ,_.-   ~  CASCADES WICHITA    |         \n";
+    cout << "     |'     ` ._   |    .        ''        ~  ~ ~     X            ;.        \n";
+    cout << "    ,/     .   ''|_|  .   ▒▒▒▒▒▒▒▒▒▒▒▒       ~  ~  ~  ║    .   .     '-. __.  \n";
+    cout << " /-''   ☼              ▒▒▒▒PINK LAKE▒▒▒           ╔═══╝         .       '  ;  \n";
+    cout << "/  DESERT DE  ☼    .     ▒▒▒▒▒▒▒▒▒▒▒     .        ║     .       ■ ■   ■  ■ ';.\n";
+    cout << "|  ☼ CACTUS  ☼         .      X           ╔═══════╩═════════X  ■   DALLAS   |\n";
+    cout << "''| b_  ☼     ╔═══════════════╩═══╗  .    ║                      ■   ■  ■   |\n";
+    cout << "   '☼     ☼   ║    .       .      ╚══════╦╝    ¤      ¤      .       ■  ■   ,'\n";
+    cout << "  ,/'         ║       .      ,___        ║   ¤  ¤  ¤ ¤  ¤        .          |' \n";
+    cout << " /'     X═════╝   .        /''  ';.      X  ¤   BROWNWOOD  ¤          .   J  \n";
+    cout << " |  MIDLAND          .  ,/'      `._    _   ¤  ¤  ¤ ¤        .          /'  \n";
+    cout << " '|-__,,.--.-.        ,,-          '''''''-...   ¤     ¤___   ,,--....|   \n";
+    cout << "     ''      ''`-..Y-''                      `...- ...-''  ''''           \n";
+    cout << "Prix des trains:" << endl;
+    cout << "[1 - MIDLAND : 2$] [2 - BROWNWOOD : 2$] [3 - CASCADES WICHITA : 3$] [4 - DALLAS : 4$] [5 - PINK LAKE : 1.5$]" << endl;
+    cout << "Le voyage vers [6 - DESERT DE CACTUS] se fait gratuitement à cheval." << endl;
+    cout << "Voyage choisi:" << endl;
+    cout << endl;
+}
+
+void afficher_interface_jeu(bool rencontre, string lieu)
+{
+    cout << endl;
+    cout << "Position actuelle: " << lieu << endl;
+    cout << "Points de vie: " << endl;
+
+    cout << "[1 - VOYAGER] [2 - BOUTIQUE] [3 - INVENTAIRE]" << endl;
+}
