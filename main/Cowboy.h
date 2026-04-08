@@ -30,7 +30,7 @@ class Cowboy {
         void setMercyGoal();
 
         vector<string> getAvailableActs();
-        void addAvailableActs();
+        void setAvailableActs();
 };
 
 #endif COWBOY_H
