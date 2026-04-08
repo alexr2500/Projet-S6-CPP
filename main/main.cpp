@@ -8,7 +8,5 @@ int main(void) {
     cout << "Choisissez un nom de cowboy:" << endl;
     cin >> nom_personnage;
 
-    string t = "test";
-
     return 0;
 }
