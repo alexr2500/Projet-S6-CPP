@@ -25,7 +25,7 @@ public:
     void setHpCurrent(int hpCurrent);
     void setHpMax(int hpMax);
 
-    getName() const;
+    string getName() const;
     int getHpCurrent() const;
     int getHpMax() const;
 };
