@@ -18,19 +18,19 @@ class Cowboy {
         int getActCapacity();
 
         int getAttackStat();
-        void setAttackStat();
+        void setAttackStat(int as);
 
         int getDefenseStat();
-        void setDefenseStat();
+        void setDefenseStat(int ds);
 
         int getCurrentMercy();
-        void setCurrentMercy();
+        void setCurrentMercy(int cm);
 
         int getMercyGoal();
-        void setMercyGoal();
+        void setMercyGoal(int mg);
 
         vector<string> getAvailableActs();
-        void setAvailableActs();
+        void setAvailableActs(vector<string> aa);
 };
 
 #endif COWBOY_H
