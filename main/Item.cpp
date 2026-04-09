@@ -9,45 +9,46 @@ Item::Item(string name, string type, int healValue, int quantity) {
     this->quantity = quantity;
 }
 
-void Item::use() {
-    if (quantity == 0) {
-        cout << "Vous avez épuisé l'item " << name << "." << endl;
+int Item::use() {
+    if (this->quantity <= 0) {
+        cout << "Vous avez epuise l'item " << this->name << "." << endl;
+        return 0; // Aucun soin n'est appliqué
     }
-    else
-    {
-        cout << "Vous avez utilisé l'item " << name << ", vous gagnez " <<  healValue << " points de vie." << endl;
-        quantity--;
+    else {
+        cout << "Vous consommez : " << this->name << ". Vous regagnez " << this->healValue << " HP." << endl;
+        this->quantity--;
+        return this->healValue; // On renvoie la valeur du soin
     }
 }
 
-string Item::getName() {
+string Item::getName() const {
     return name;
 }
 
 void Item::setName(string n) {
-    name = n;
+    this->name = n;
 }
 
-string Item::getType() {
+string Item::getType() const {
     return type;
 }
 
 void Item::setType(string t) {
-    type = t;
+    this->type = t;
 }
 
-int Item::getHealValue() {
+int Item::getHealValue() const {
     return healValue;
 }
 
 void Item::setHealValue(int hv) {
-    healValue =  hv;
+    this->healValue =  hv;
 }
 
-int Item::getQuantity() {
+int Item::getQuantity() const {
     return quantity;
 }
 
 void Item::setQuantity(int q) {
-    quantity = q;
+    this->quantity = q;
 }

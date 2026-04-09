@@ -10,19 +10,19 @@ class Item {
         int healValue;
         int quantity;
     public:
-        Item (string name, string type, int heatValue, int quantity);
-        void use();
+        Item (string name, string type, int healValue, int quantity);
+        int use();
 
-        string getName();
+        string getName() const;
         void setName(string n);
 
-        string getType();
+        string getType() const;
         void setType(string t);
 
-        int getHealValue();
+        int getHealValue() const;
         void setHealValue(int hv);
 
-        int getQuantity();
+        int getQuantity() const;
         void setQuantity(int q);
 };
 
