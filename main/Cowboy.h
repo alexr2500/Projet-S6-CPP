@@ -1,36 +1,41 @@
 #ifndef COWBOY_H
 #define COWBOY_H
-#include <iostream>
+
 #include <vector>
+#include <string>
 #include "Entity.h"
+#include <iostream>
 using namespace std;
 
-class Cowboy {
-    private:
-        int attackStat;
-        int defenseStat;
-        int currentMercy;
-        int mercyGoal;
-        vector<string> availableActs;
-    public:
-        Cowboy (int attackStat, int defenseStat, int currentMercy, int mercyGoal, vector<string> availableActs);
-        void attack(Entity target);
-        int getActCapacity();
+class Cowboy : public Entity {
+private:
+    int attackStat;
+    int defenseStat;
+    int currentMercy;
+    int mercyGoal;
+    std::vector<std::string> availableActs;
 
-        int getAttackStat();
-        void setAttackStat(int as);
+public:
+    Cowboy(std::string name, int hpCurrent, int hpMax, int attackStat, int defenseStat, int currentMercy, int mercyGoal, std::vector<std::string> availableActs);
 
-        int getDefenseStat();
-        void setDefenseStat(int ds);
+    void attack(Entity& target) override;
 
-        int getCurrentMercy();
-        void setCurrentMercy(int cm);
+    virtual int getActCapacity() const;
 
-        int getMercyGoal();
-        void setMercyGoal(int mg);
+    int getAttackStat() const;
+    void setAttackStat(int as);
 
-        vector<string> getAvailableActs();
-        void setAvailableActs(vector<string> aa);
+    int getDefenseStat() const;
+    void setDefenseStat(int ds);
+
+    int getCurrentMercy() const;
+    void setCurrentMercy(int cm);
+
+    int getMercyGoal() const;
+    void setMercyGoal(int mg);
+
+    std::vector<std::string> getAvailableActs() const;
+    void setAvailableActs(std::vector<std::string> aa);
 };
 
-#endif COWBOY_H
+#endif
