@@ -16,7 +16,7 @@ void Cowboy::attack(Entity target) {
 }
 
 int Cowboy::getActCapacity() {
-
+    
 
     return capa;
 }
