@@ -6,12 +6,12 @@ using namespace std;
 
 #include "Entity.h"
 #include "Cowboy.h"
-// #include "Inventory.h" // A décommenter quand inventaire créer
+// #include "Inventory.h" // A dï¿½commenter quand inventaire crï¿½er
 
 class Sheriff : public Entity
 {
 private:
-    // Inventory inventory; // A décommenter papres
+    // Inventory inventory; // A dï¿½commenter papres
     int killsCount;
     int sparedCount;
     int victoriesCount;
