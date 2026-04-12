@@ -14,21 +14,15 @@ Cowboy::Cowboy(string name, int hpCurrent, int hpMax, int attackStat, int defens
 }
 
 void Cowboy::attack(Entity& target) {
-    // Aléatoire à faire, comme pour le Sheriff
+    // Alï¿½atoire ï¿½ faire, comme pour le Sheriff
     cout << this->getName() << " attaque " << target.getName() << " !" << endl;
 }
 
-<<<<<<< HEAD
-int Cowboy::getActCapacity() {
-    
+int Cowboy::getActCapacity() const {
+    //Ã  faire
+    int capa = 0;
 
     return capa;
-=======
-int Cowboy::getActCapacity() const {
-    // La classe de base Cowboy peut renvoyer 0 ou une valeur par défaut. 
-    // Ce sera remplacé par 2, 3 ou 4 dans NormalCowboy, MinibossCowboy et BossCowboy.
-    return 0;
->>>>>>> 17d800e3a99785a0ede1da6fb0af4ce02da08e48
 }
 
 int Cowboy::getAttackStat() const {

@@ -8,15 +8,15 @@ using namespace std;
 #include "Cowboy.h"
 
 
-//Struct permet d'associer de manière inséparable un ennemi vaincu avec le résultat exact de son affrontement
+//Struct permet d'associer de maniï¿½re insï¿½parable un ennemi vaincu avec le rï¿½sultat exact de son affrontement
 struct BestiaryEntry {
     // Premier compratiment, il stocke l'objet complet de l'ennemi
     Cowboy cowboy;
  
-    // Deuxième compartiment, true = épargné, false = tué
+    // Deuxiï¿½me compartiment, true = ï¿½pargnï¿½, false = tuï¿½
     bool wasSpared;
 };
-// Une petite structure pour lier l'ennemi vaincu à son sort
+// Une petite structure pour lier l'ennemi vaincu ï¿½ son sort
 
 class Bestiary {
 private:

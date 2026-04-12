@@ -21,7 +21,7 @@ int Item::use() {
     }
 }
 
-string Item::getName() const {
+string Item::getName() {
     return name;
 }
 
@@ -29,7 +29,7 @@ void Item::setName(string n) {
     this->name = n;
 }
 
-string Item::getType() const {
+string Item::getType() {
     return type;
 }
 
@@ -37,7 +37,7 @@ void Item::setType(string t) {
     this->type = t;
 }
 
-int Item::getHealValue() const {
+int Item::getHealValue() {
     return healValue;
 }
 
@@ -45,7 +45,7 @@ void Item::setHealValue(int hv) {
     this->healValue =  hv;
 }
 
-int Item::getQuantity() const {
+int Item::getQuantity() {
     return quantity;
 }
 
