@@ -18,7 +18,8 @@ private:
     int victoriesCount;
 
 public:
-    Sheriff(string name, int hpCurrent, int hpMax);
+    Sheriff();
+    Sheriff(Inventory inventory, name, int hpCurrent, int hpMax);
 
     void attack(Entity& target) override;
 
