@@ -15,7 +15,7 @@ void Bestiary::displayBestiary() const {
     cout << "\n=== CARNET DE CHASSE (BESTIAIRE) ===" << endl;
 
     if (this->entries.empty()) {
-        cout << "Aucun hors-la-loi n'a encore croise votre route." << endl;
+        cout << "Aucun hors-la-loi n'a encore croisé votre route." << endl;
         cout << "====================================" << endl;
         return;
     }

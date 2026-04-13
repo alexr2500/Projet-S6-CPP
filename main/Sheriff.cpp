@@ -12,14 +12,14 @@ Sheriff::Sheriff(string name, int hpCurrent, int hpMax) : Entity(name, hpCurrent
 
 void Sheriff::attack(Entity& target)
 {
-    // Mise en place de l'aléatoire
+    // Mise en place de l'alï¿½atoire
     random_device rd;
     mt19937 gen(rd());
 
     // La distribution va de 0 aux HP maximum de la cible
     uniform_int_distribution<> distrib(0, target.getHpMax());
 
-    // Tirage des dégâts
+    // Tirage des dï¿½gï¿½ts
     int damage = distrib(gen);
 
     cout << "\n*** " << this->getName() << " degaine et tire sur " << target.getName() << " ! ***\n";
@@ -82,10 +82,10 @@ void Sheriff::addVictory()
 
 void Sheriff::act(Cowboy& target, string actId)
 {
-    // A compléter plus tard
+    // A complï¿½ter plus tard
 }
 
 void Sheriff::mercy(Cowboy& target)
 {
-    // A compléter plus tard
+    // A complï¿½ter plus tard
 }

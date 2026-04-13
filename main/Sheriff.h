@@ -2,6 +2,7 @@
 #define SHERIFF_H
 
 #include <iostream>
+#include "Inventory.h"
 using namespace std;
 
 #include "Entity.h"
@@ -11,7 +12,7 @@ using namespace std;
 class Sheriff : public Entity
 {
 private:
-    // Inventory inventory; // A d�commenter papres
+    Inventory inventory;
     int killsCount;
     int sparedCount;
     int victoriesCount;
