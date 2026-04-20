@@ -8,6 +8,7 @@ class Inventory {
     private:
         vector<Item> itemList;
     public:
+        Inventory();
         Inventory(vector<Item> itemList);
 
         void displayInventory();

@@ -26,4 +26,4 @@ class Item {
         void setQuantity(int q);
 };
 
-#endif ITEM_H
+#endif

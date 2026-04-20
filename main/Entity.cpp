@@ -10,14 +10,9 @@ Entity::Entity(string name, int hpCurrent, int hpMax)
     this->hpMax = hpMax;
 }
 
-void Entity::takeDamage(int amount)
-{
-    this->hpCurrent -= amount;
-
-    if (this->hpCurrent < 0)
-    {
-        this->hpCurrent = 0;
-    }
+void Entity::takeDamage(int amount) {
+    hpCurrent -= amount;
+    if (hpCurrent < 0) hpCurrent = 0;
 }
 
 bool Entity::isDead() const

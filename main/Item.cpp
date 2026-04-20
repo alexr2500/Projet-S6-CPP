@@ -1,4 +1,4 @@
-#include <iostream>>
+#include <iostream>
 #include "Item.h"
 using namespace std;
 
@@ -21,7 +21,7 @@ int Item::use() {
     }
 }
 
-string Item::getName() {
+string Item::getName() const {
     return name;
 }
 
@@ -29,7 +29,7 @@ void Item::setName(string n) {
     this->name = n;
 }
 
-string Item::getType() {
+string Item::getType() const {
     return type;
 }
 
@@ -37,7 +37,7 @@ void Item::setType(string t) {
     this->type = t;
 }
 
-int Item::getHealValue() {
+int Item::getHealValue() const {
     return healValue;
 }
 
@@ -45,7 +45,7 @@ void Item::setHealValue(int hv) {
     this->healValue =  hv;
 }
 
-int Item::getQuantity() {
+int Item::getQuantity() const {
     return quantity;
 }
 

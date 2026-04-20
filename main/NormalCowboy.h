@@ -11,7 +11,7 @@ class NormalCowboy : public Cowboy {
     public:
         NormalCowboy(string name, int hpCurrent, int hpMax, int attackStat, int defenseStat, int currentMercy, int mercyGoal, vector<string> availableActs);
 
-        int getActCapacity() const override;
+        int getActCapacity() const;
 };
 
 #endif

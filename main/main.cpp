@@ -12,12 +12,12 @@ int main(void) {
 
     int hpCurrent = 100;
     int hpMax = 100;
-    Sheriff player(nom_sheriff, hpCurrent, hpMax);
+    
+    Inventory inventory;
 
     GameManager game;
-    game.init(nom_sheriff, hpCurrent, hpMax);
+    game.init(inventory, nom_sheriff, hpCurrent, hpMax);
     game.run();
-    game.end();
 
     return 0;
 }

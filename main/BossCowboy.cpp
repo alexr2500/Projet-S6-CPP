@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include<vector>
+
 using namespace std;
 
 // on transmet a Cowboy

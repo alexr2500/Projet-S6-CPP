@@ -19,7 +19,7 @@ private:
 
 public:
     Sheriff();
-    Sheriff(Inventory inventory, name, int hpCurrent, int hpMax);
+    Sheriff(Inventory inventory, string name, int hpCurrent, int hpMax);
 
     void attack(Entity& target) override;
 

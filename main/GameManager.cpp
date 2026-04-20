@@ -1,95 +1,128 @@
 #include "GameManager.h"
-#include "Sheriff.h"
-#include "Cowboy.h"
 #include "NormalCowboy.h"
 #include "MiniBossCowboy.h"
 #include "BossCowboy.h"
-#include "Inventory.h"
-#include <vector>
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
 
-GameManager::GameManager() {
-    Sheriff player;
-    vector<Cowboy*> cowboys;
-    vector<string> availableActs;
-}
+using namespace std;
+
+GameManager::GameManager() {}
 
 void GameManager::init(Inventory inventory, string nom_sheriff, int hpCurrent, int hpMax) {
+    this->inventory = inventory;
     this->player = Sheriff(inventory, nom_sheriff, hpCurrent, hpMax);
 
-    this->cowboys;
-    this->availableActs = {"Attaquer", "Défendre", "Regénérer", "Attaque spéciale", "Inventaire"};
+    this->availableActs = {"attaquer", "parler", "menacer", "plaisanter", "mercy"};
 
     for (int i = 1; i <= 10; i++) {
 
         if (i <= 6) {
-            cowboys.push_back(new NormalCowboy("Cowboy_" + to_string(i), 50 + i*10, 50 + i*10, 10 + i*2, 5, 0, 100, availableActs));
+            cowboys.push_back(new NormalCowboy(
+                "Cowboy_" + to_string(i),
+                80, 80,
+                10, 5,
+                0, 100,
+                availableActs
+            ));
         }
         else if (i <= 9) {
-            cowboys.push_back(new MiniBossCowboy("MiniBoss_" + to_string(i), 100 + i*20, 100 + i*20, 20 + i*3, 10 + i*2, 200, 200, availableActs));
+            cowboys.push_back(new MiniBossCowboy(
+                "MiniBoss_" + to_string(i),
+                120, 120,
+                15, 10,
+                0, 150,
+                availableActs
+            ));
         }
         else {
-            cowboys.push_back(new BossCowboy("BOSS_FINAL", 300, 300, 30 + i*5, 20 + i*3, 300, 300, availableActs));
+            cowboys.push_back(new BossCowboy(
+                "BOSS_FINAL",
+                200, 200,
+                25, 15,
+                0, 200,
+                availableActs
+            ));
         }
     }
 }
 
 void GameManager::run() {
-    cout << endl;
-    bool playerBattu = false;
-    bool alterner = rand() % 2;
+    srand(time(nullptr));
 
-    for (int i = 0; i < 10; i++)
-    {
-        cout << "___________________________________________________________________________" << endl;
-        cout << "Combat N° " << i + 1 << " contre " << cowboys[i]->getName() << "." << endl;
-        cout << endl;
+    for (Cowboy* enemy : cowboys) {
 
-        while (player.getHpCurrent() > 0 && cowboys[i]->getHpCurrent() > 0)
-        {
-            cout << "\033[33m" << player.getName() << " Santé: " << player.getHpCurrent() << "    " << "\033[31m" << cowboys[i]->getName() << " Santé: " << cowboys[i]->getHpCurrent() << "\033[0m" << endl;
-            cout << endl;
+        cout << "\n==============================\n";
+        cout << "Combat contre " << enemy->getName() << endl;
 
-            if (alterner == false)
-            {
-                cout << "C'est au tour de " << player.getName() << endl;
-                cout << "Choisir une action: " << end;
-                for (int i = 0; i < availableActs.size(); i++) {
-                    cout << i + 1 << ". " << availableActs[i] << "   ";
-                }
-                cout << endl;
+        while (!player.isDead() && !enemy->isDead()) {
 
-                int choix = 0;
-                cin >> choix;
-                while (choix < 1 || choix > 6)
-                {
-                    cout << "Choisissez parmi les choix proposés." << endl;
-                    cin >> choix;
-                }
+            cout << "\n\033[33m" << player.getName() << " HP: " << player.getHpCurrent();
+            cout << " |\033[31m " << enemy->getName() << " HP: " << enemy->getHpCurrent() << "\033[0m" << endl;
 
-                switch (choix) {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    default:
-                        break;
-                }
+            // ===== TOUR JOUEUR =====
+            cout << "\nActions disponibles:\n";
+            for (int i = 0; i < availableActs.size(); i++) {
+                cout << i + 1 << ". " << availableActs[i] << endl;
             }
-            else 
-            {
-                cout << "C'est au tour de " << cowboys[i]->getName() << endl;
+
+            int choix;
+            cin >> choix;
+
+            while (choix < 1 || choix > availableActs.size()) {
+                cout << "Choix invalide: ";
+                cin >> choix;
+            }
+
+            string action = availableActs[choix - 1];
+
+            if (action == "attaquer") {
+                player.attack(*enemy);
+            }
+            else if (action == "mercy") {
+                player.mercy(*enemy);
+            }
+            else {
+                player.act(*enemy, action);
+            }
+
+            if (enemy->isDead()) {
+                cout << enemy->getName() << " est mort.\n";
+                player.addKill();
+                break;
+            }
+
+            if (enemy->getCurrentMercy() >= enemy->getMercyGoal()) {
+                cout << enemy->getName() << " est épargné.\n";
+                player.addSpared();
+                break;
+            }
+
+            // ===== TOUR ENNEMI =====
+            cout << "\nTour de " << enemy->getName() << endl;
+            enemy->attack(player);
+
+            if (player.isDead()) {
+                cout << "\nLe Sheriff est mort...\n";
+                end();
+                return;
             }
         }
+
+        player.addVictory();
+        cout << "Victoire !\n";
     }
+
+    cout << "\nTous les ennemis sont vaincus !\n";
+    end();
 }
 
 void GameManager::end() {
+    for (Cowboy* c : cowboys) {
+        delete c;
+    }
+    cowboys.clear();
 
+    cout << "\nFin du jeu.\n";
 }

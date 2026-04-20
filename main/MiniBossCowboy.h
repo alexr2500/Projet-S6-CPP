@@ -13,7 +13,7 @@ public:
     MiniBossCowboy(string name, int hpCurrent, int hpMax, int attackStat, int defenseStat, int currentMercy, int mercyGoal, vector<string> availableActs);
 
     // On red�f (override) la capacit� d'action
-    int getActCapacity() const override;
+    int getActCapacity() const;
 };
 
 #endif

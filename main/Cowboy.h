@@ -20,7 +20,7 @@ public:
 
     void attack(Entity& target) override;
 
-    virtual int getActCapacity() const;
+    int getActCapacity() const;
 
     int getAttackStat() const;
     void setAttackStat(int as);
