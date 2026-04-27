@@ -5,7 +5,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
-
 using namespace std;
 
 GameManager::GameManager() {}
@@ -14,7 +13,7 @@ void GameManager::init(Inventory inventory, string nom_sheriff, int hpCurrent, i
     this->inventory = inventory;
     this->player = Sheriff(inventory, nom_sheriff, hpCurrent, hpMax);
 
-    this->availableActs = {"attaquer", "parler", "menacer", "plaisanter", "mercy"};
+    this->availableActs = {"FIGHT", "ACT", "USE ITEM", "MERCY"};
 
     for (int i = 1; i <= 10; i++) {
 
@@ -59,7 +58,7 @@ void GameManager::run() {
         while (!player.isDead() && !enemy->isDead()) {
 
             cout << "\n\033[33m" << player.getName() << " HP: " << player.getHpCurrent();
-            cout << " |\033[31m " << enemy->getName() << " HP: " << enemy->getHpCurrent() << "\033[0m" << endl;
+            cout << " |\033[31m " << enemy->getName() << " HP: " << enemy->getHpCurrent() << "\033[0m" << " Mercy: " << enemy->getCurrentMercy() << "/" << enemy->getMercyGoal() << endl;
 
             // ===== TOUR JOUEUR =====
             cout << "\nActions disponibles:\n";
@@ -77,14 +76,17 @@ void GameManager::run() {
 
             string action = availableActs[choix - 1];
 
-            if (action == "attaquer") {
+            if (action == "FIGHT") {
                 player.attack(*enemy);
             }
-            else if (action == "mercy") {
+            else if (action == "ACT") {
                 player.mercy(*enemy);
             }
-            else {
+            else if (action == "USE ITEM") {
                 player.act(*enemy, action);
+            }
+            else if (action == "MERCY") {
+
             }
 
             if (enemy->isDead()) {

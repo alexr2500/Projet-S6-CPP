@@ -13,12 +13,14 @@ private:
     int defenseStat;
     int currentMercy;
     int mercyGoal;
-    std::vector<std::string> availableActs;
+    vector<string> availableActs;
 
 public:
-    Cowboy(std::string name, int hpCurrent, int hpMax, int attackStat, int defenseStat, int currentMercy, int mercyGoal, std::vector<std::string> availableActs);
+    Cowboy(string name, int hpCurrent, int hpMax, int attackStat, int defenseStat, int currentMercy, int mercyGoal, std::vector<std::string> availableActs);
 
     void attack(Entity& target) override;
+
+    void addMercy(int amount);
 
     int getActCapacity() const;
 
@@ -34,8 +36,8 @@ public:
     int getMercyGoal() const;
     void setMercyGoal(int mg);
 
-    std::vector<std::string> getAvailableActs() const;
-    void setAvailableActs(std::vector<std::string> aa);
+    vector<string> getAvailableActs() const;
+    void setAvailableActs(vector<string> aa);
 };
 
 #endif

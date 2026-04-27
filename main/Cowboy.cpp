@@ -64,3 +64,13 @@ vector<string> Cowboy::getAvailableActs() const {
 void Cowboy::setAvailableActs(vector<string> aa) {
     this->availableActs = aa;
 }
+
+void Cowboy::addMercy(int amount)
+{
+    this->currentMercy += amount;
+
+    if (this->currentMercy > this->mercyGoal)
+    {
+        this->currentMercy = this->mercyGoal;
+    }
+}

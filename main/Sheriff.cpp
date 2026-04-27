@@ -2,6 +2,7 @@
 #include "Inventory.h"
 #include <iostream>
 #include <random>
+#include "Cowboy.h"
 using namespace std;
 
 Sheriff::Sheriff() : Entity("Sheriff ordinaire", 100, 100) {
@@ -80,13 +81,29 @@ void Sheriff::addVictory()
     this->victoriesCount++;
 }
 
-
 void Sheriff::act(Cowboy& target, string actId)
 {
-    // A compl�ter plus tard
+    target.addMercy(20);
 }
 
 void Sheriff::mercy(Cowboy& target)
 {
-    // A compl�ter plus tard
+    cout << "\n*** Tentative de SPARE sur " << target.getName() << " ***\n";
+
+    if (target.getCurrentMercy() >= target.getMercyGoal())
+    {
+        cout << target.getName() << " se rend.\n";
+        cout << "*** SPARED ! ***\n";
+
+        this->addSpared();
+        this->addVictory();
+
+        target.setHpCurrent(0);
+    }
+    else
+    {
+        cout << "Mercy insuffisante (" 
+             << target.getCurrentMercy() << "/" 
+             << target.getMercyGoal() << ")\n";
+    }
 }
