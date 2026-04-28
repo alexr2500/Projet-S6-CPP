@@ -1,0 +1,6 @@
+name,type,healValue,quantity
+Café,Consommable,5,3
+Chocolat,Consommable,8,3
+Viande,Consommable,20,2
+Bandages,Soin,25,3
+Antidote,Soin,100,1

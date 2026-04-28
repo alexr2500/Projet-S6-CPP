@@ -1,0 +1,11 @@
+Type,Name,Health,MaxHealth,Attack,Defense,Current_Mercy,Mercy_Goal
+NormalCowboy,Dusty Miller,80,80,10,5,0,100
+NormalCowboy,Lefty O’Shea,80,80,10,5,0,100
+NormalCowboy,Silas Reed,80,80,10,5,0,100
+NormalCowboy,Caleb Thorne,80,80,10,5,0,100
+NormalCowboy,Flint Westwood,80,80,10,5,0,100
+NormalCowboy,Boone Holloway,80,80,10,5,0,100
+MiniBossCowboy,Rawhide Red,120,120,15,10,0,150
+MiniBossCowboy,The Ghost,120,120,15,10,0,150
+MiniBossCowboy,McGee,120,120,15,10,0,150
+BossCowboy,Desperado King,200,200,25,15,0,200

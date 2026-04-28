@@ -9,16 +9,8 @@ Item::Item(string name, string type, int healValue, int quantity) {
     this->quantity = quantity;
 }
 
-int Item::use() {
-    if (this->quantity <= 0) {
-        cout << "Vous avez epuise l'item " << this->name << "." << endl;
-        return 0; // Aucun soin n'est appliqué
-    }
-    else {
-        cout << "Vous consommez : " << this->name << ". Vous regagnez " << this->healValue << " HP." << endl;
-        this->quantity--;
-        return this->healValue; // On renvoie la valeur du soin
-    }
+void Item::display() const {
+    cout << "  [" << this->type << "] " << this->name << " x" << this->quantity << endl;
 }
 
 string Item::getName() const {

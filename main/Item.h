@@ -4,14 +4,15 @@
 using namespace std;
 
 class Item {
-    private:
+    protected:
         string name;
         string type;
         int healValue;
         int quantity;
     public:
         Item (string name, string type, int healValue, int quantity);
-        int use();
+        virtual void display() const;
+        virtual int use() = 0; 
 
         string getName() const;
         void setName(string n);

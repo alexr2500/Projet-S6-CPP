@@ -1,18 +1,24 @@
-#ifndef INVENTORY_H
-#define INVENTORY_H
-#include <iostream>
+#pragma once
 #include "Item.h"
 #include <vector>
+#include <memory>
+#include <string>
 
 class Inventory {
-    private:
-        vector<Item> itemList;
-    public:
-        Inventory();
-        Inventory(vector<Item> itemList);
+private:
+    std::vector<std::shared_ptr<Item>> itemList;
 
-        void displayInventory();
-        void consumeItem(string name);
+public:
+    Inventory() = default;
+
+    void addItem(std::shared_ptr<Item> item);
+
+    // Affiche tous les items (polymorphisme : appelle display() de chaque sous-classe)
+    void displayInventory() const;
+
+    // Utilise un item par son nom : retourne l'effet (PV ou dégâts), -1 si introuvable
+    int consumeItem(const std::string& itemName);
+
+    bool isEmpty() const;
+    const std::vector<std::shared_ptr<Item>>& getItems() const;
 };
-
-#endif

@@ -54,6 +54,10 @@ void Sheriff::attack(Entity& target)
     }
 }
 
+Inventory Sheriff::getInventory() const{
+    return inventory;
+}
+
 
 int Sheriff::getKillsCount() const 
 {

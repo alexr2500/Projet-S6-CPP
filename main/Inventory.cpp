@@ -1,60 +1,38 @@
 #include "Inventory.h"
-#include "Item.h"
 #include <iostream>
-#include <vector>
+using namespace std;
 
-Inventory::Inventory() {
-
+void Inventory::addItem(shared_ptr<Item> item) {
+    itemList.push_back(item);
 }
 
-Inventory::Inventory(vector<Item> itemList) {
-    this->itemList = itemList;
-}
-
-void Inventory::displayInventory() {
-    cout << "Inventaire:" << endl;
-
-    vector<Item> apparition;
-    vector<int> frequence;
-
-    for (int i = 0; i < itemList.size(); i++)
-    {
-        bool deja_present = false;
+void Inventory::displayInventory() const {
+    if (itemList.empty()) {
+        cout << "  (Inventaire vide)" << endl;
+        return;
+    }
+    for (const auto& item : itemList) {
+        if (item->getQuantity() > 0)
+            item->display();
     }
 }
 
-void Inventory::consumeItem(string name) {
-    
-}
-
-/*
-    vector<char> ens_char;
-    vector<int> frequence;
-
-    for (size_t i = 0; i < s2.size(); i++)
-    {
-        
-
-        for (size_t j = 0; j < ens_char.size(); j++)
-        {
-            if (s2[i] == ens_char[j])
-            {
-                deja_present = true;
-                frequence[j]++;
-                break;
-            }
-        }
-
-        if (!deja_present)
-        {
-            ens_char.push_back(s2[i]);
-            frequence.push_back(1);
+int Inventory::consumeItem(const string& itemName) {
+    for (auto& item : itemList) {
+        if (item->getName() == itemName && item->getQuantity() > 0) {
+            return item->use();
         }
     }
+    cout << "  Item '" << itemName << "' introuvable ou épuisé." << endl;
+    return -1;
+}
 
-    cout << "\nCaractères uniques et leurs fréquences:" << std::endl;
-    for (size_t i = 0; i < ens_char.size(); i++)
-    {
-        cout << ens_char[i] << " : " << frequence[i] << std::endl;
-    }
-*/
+bool Inventory::isEmpty() const {
+    for (const auto& item : itemList)
+        if (item->getQuantity() > 0) return false;
+    return true;
+}
+
+const vector<shared_ptr<Item>>& Inventory::getItems() const {
+    return itemList;
+}

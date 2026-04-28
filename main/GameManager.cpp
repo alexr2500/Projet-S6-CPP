@@ -2,9 +2,13 @@
 #include "NormalCowboy.h"
 #include "MiniBossCowboy.h"
 #include "BossCowboy.h"
+#include "Consommable.h"
+#include "Soin.h"
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include <fstream>
+#include <sstream>
 using namespace std;
 
 GameManager::GameManager() {}
@@ -15,36 +19,73 @@ void GameManager::init(Inventory inventory, string nom_sheriff, int hpCurrent, i
 
     this->availableActs = {"FIGHT", "ACT", "USE ITEM", "MERCY"};
 
-    for (int i = 1; i <= 10; i++) {
+    ifstream file("cowboys.csv");
+    string line;
 
-        if (i <= 6) {
-            cowboys.push_back(new NormalCowboy(
-                "Cowboy_" + to_string(i),
-                80, 80,
-                10, 5,
-                0, 100,
-                availableActs
-            ));
+    getline(file, line);
+
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string type, name, val;
+        vector<int> stats;
+
+        getline(ss, type, ',');
+        getline(ss, name, ',');
+
+        while (getline(ss, val, ',')) {
+            stats.push_back(stoi(val));
         }
-        else if (i <= 9) {
-            cowboys.push_back(new MiniBossCowboy(
-                "MiniBoss_" + to_string(i),
-                120, 120,
-                15, 10,
-                0, 150,
-                availableActs
-            ));
-        }
-        else {
-            cowboys.push_back(new BossCowboy(
-                "BOSS_FINAL",
-                200, 200,
-                25, 15,
-                0, 200,
-                availableActs
-            ));
+
+    if (stats.size() >= 6) {
+        if (type == "NormalCowboy") {
+            cowboys.push_back(new NormalCowboy(name, stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], availableActs));
+        } 
+        else if (type == "MiniBossCowboy") {
+            cowboys.push_back(new MiniBossCowboy(name, stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], availableActs));
+        } 
+        else if (type == "BossCowboy") {
+            cowboys.push_back(new BossCowboy(name, stats[0], stats[1], stats[2], stats[3], stats[4], stats[5], availableActs));
         }
     }
+
+
+    ifstream itemFile("items.csv");
+    string itemLine;
+
+    getline(itemFile, itemLine);
+
+    while (getline(itemFile, itemLine)) {
+        stringstream ss(itemLine);
+        string type, name, val;
+        vector<int> itemStats;
+
+        getline(ss, type, ',');
+        getline(ss, name, ',');
+
+        while (getline(ss, val, ',')) {
+            itemStats.push_back(stoi(val));
+        }
+
+        if (itemStats.size() >= 2) {
+        int effectValue = itemStats[0];
+        int quantity = itemStats[1];
+
+        if (type == "Soin") {
+            inventory.addItem(make_shared<Soin>(name, effectValue, quantity));
+        } 
+        else if (type == "Consommable") {
+            inventory.addItem(make_shared<Consommable>(name, effectValue, quantity));
+        }
+    }
+
+        
+    }
+    itemFile.close();
+
+    this->player.getInventory() = this->inventory;
+    }
+
+    file.close();
 }
 
 void GameManager::run() {
@@ -56,7 +97,7 @@ void GameManager::run() {
         cout << "Combat contre " << enemy->getName() << endl;
 
         while (!player.isDead() && !enemy->isDead()) {
-
+            cout << "------------------------------------------------" << endl;
             cout << "\n\033[33m" << player.getName() << " HP: " << player.getHpCurrent();
             cout << " |\033[31m " << enemy->getName() << " HP: " << enemy->getHpCurrent() << "\033[0m" << " Mercy: " << enemy->getCurrentMercy() << "/" << enemy->getMercyGoal() << endl;
 
@@ -79,14 +120,42 @@ void GameManager::run() {
             if (action == "FIGHT") {
                 player.attack(*enemy);
             }
+
             else if (action == "ACT") {
                 player.mercy(*enemy);
             }
-            else if (action == "USE ITEM") {
-                player.act(*enemy, action);
-            }
-            else if (action == "MERCY") {
 
+            else if (action == "USE ITEM") {
+                cout << "\033[33m── Inventaire ──\033[0m" << endl;
+                player.getInventory().displayInventory();
+
+                if (player.getInventory().isEmpty()) {
+                    cout << "  Inventaire vide !" << endl;
+                } else {
+                    cout << "Quel item voulez-vous utiliser ? (Entrez le nom) : ";
+                    string itemName;
+                    cin.ignore();
+                    getline(cin, itemName);
+
+                    int result = player.getInventory().consumeItem(itemName);
+
+                    if (result > 0) {
+                        int newHp = player.getHpCurrent() + result;
+                        
+                        if (newHp > player.getHpMax()) {
+                            newHp = player.getHpMax();
+                        }
+                        
+                        player.setHpCurrent(newHp);
+                        cout << "Soin appliqué ! Nouveaux HP : " << player.getHpCurrent() << "/" << player.getHpMax() << endl;
+                    } else if (result == 0) {
+                        cout << "L'item n'a eu aucun effet." << endl;
+                    }
+                }
+            }
+
+            else if (action == "MERCY") {
+                
             }
 
             if (enemy->isDead()) {
@@ -101,7 +170,7 @@ void GameManager::run() {
                 break;
             }
 
-            // ===== TOUR ENNEMI =====
+            cout << "------------------------------------------------" << endl;
             cout << "\nTour de " << enemy->getName() << endl;
             enemy->attack(player);
 

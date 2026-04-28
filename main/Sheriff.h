@@ -26,6 +26,8 @@ public:
     void act(Cowboy& target, string actId);
     void mercy(Cowboy& target);
 
+    Inventory getInventory() const;
+
     int getKillsCount() const;
     int getSparedCount() const;
     int getVictoriesCount() const;
